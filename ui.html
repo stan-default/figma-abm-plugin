@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSV Import</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    input[type="file"] {
+      margin-top: 10px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Upload CSV to Sync</h2>
+  <input type="file" id="csvFile" accept=".csv" />
+  <button id="upload">Sync to Figma</button>
+
+  <script>
+    let csvContent = "";
+
+    document.getElementById("csvFile").addEventListener("change", function (e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        csvContent = event.target.result;
+      };
+      reader.readAsText(file);
+    });
+
+    document.getElementById("upload").addEventListener("click", function () {
+      if (!csvContent) {
+        parent.postMessage({ pluginMessage: { type: 'error', message: 'Please upload a CSV first.' } }, '*');
+        return;
+      }
+
+      parent.postMessage({ pluginMessage: { type: "process-csv", csv: csvContent } }, "*");
+    });
+  </script>
+</body>
+</html>

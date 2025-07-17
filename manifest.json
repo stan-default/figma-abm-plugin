@@ -1,0 +1,17 @@
+{
+  "name": "ABM Ads",
+  "id": "1526371154467664612",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html",
+  "capabilities": [],
+  "enableProposedApi": true,
+  "documentAccess": "dynamic-page",
+  "editorType": ["figma"],
+  "networkAccess": {
+    "allowedDomains": [
+      "https://docs.google.com", 
+      "https://cdn.brandfetch.io"
+    ]
+  }
+}
