@@ -17,7 +17,6 @@ figma.ui.onmessage = async (msg) => {
 
       figma.notify("Updated selected frames from CSV");
       figma.closePlugin();
-
     } catch (err) {
       console.error("Error processing CSV:", err);
       figma.notify("Error while processing the CSV.");
@@ -91,9 +90,12 @@ async function updateFrameWithRow(frame, row) {
     }
   }
 
-  // Optional: Rename frame based on CSV value
-  if (row["FrameName"]) {
-    frame.name = row["FrameName"];
+  // Rename frame dynamically if its name uses {{Variable}} pattern
+  if (frame.name.startsWith("{{") && frame.name.endsWith("}}")) {
+    const key = frame.name.slice(2, -2).trim();
+    if (row[key]) {
+      frame.name = row[key];
+    }
   }
 }
 
