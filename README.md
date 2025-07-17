@@ -20,10 +20,10 @@ A Figma plugin that syncs your selected frames with dynamic content from a CSV f
 
 ### Supported Value Types
 
-Value Format	Result
-Some text	Replaces characters in TEXT layer
-#RRGGBB		Sets solid fill color
-Image URL	Loads and applies image fill
+- Value Format	-   Result
+- Some text    	-   Replaces characters in TEXT layer
+- #RRGGBB        	-   Sets solid fill color
+- Image URL       -	Loads and applies image fill
 
 
 
@@ -31,15 +31,15 @@ Image URL	Loads and applies image fill
 
 CSV:
 
-Name,Background,Logo
-Stan,#FF5733,https://example.com/logo.png
+- Name,Background,Logo
+- Stan,#FF5733,https://example.com/logo.png
 
 Figma Layers:
 
-Text layer named {{Name}} → becomes Stan
-Rectangle named {{Background}} → fill becomes #FF5733
-Shape named {{Logo}} → fill becomes the image from the URL
-Frame named {{Name}} → renamed to Stan
+- Text layer named {{Name}} → becomes Stan
+- Rectangle named {{Background}} → fill becomes #FF5733
+- Shape named {{Logo}} → fill becomes the image from the URL
+- Frame named {{Name}} → renamed to Stan
 
 
 ### Requirements
